@@ -9,12 +9,21 @@ class App extends Component {
       { name: 'Bartek', age: 22},
       { name: 'Noziak', age: 32},
       { name: 'Kupa', age: 10}
-    ]
+    ],
+    otherState: 'balalala'
   }
-  
+
   //IS6 Arrow Function
   switchNameHandler = () => {
-    console.log("Was clicked");
+    // console.log("Was clicked");
+    // TO NIE DZIAŁAthis.state.persons[0].name = "Bartłomiej";
+    this.setState({
+      persons: [
+      { name: 'Bartłomiej', age: 22},
+      { name: 'Noziak', age: 32},
+      { name: 'Kupa', age: 5}
+      ]
+    })
   };
 
   render() {
