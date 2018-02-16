@@ -10,7 +10,8 @@ class App extends Component {
       { name: 'Noziak', age: 32},
       { name: 'Kupa', age: 10}
     ],
-    otherState: 'balalala'
+    otherState: 'balalala',
+    showPersons: false
   }
 
   //IS6 Arrow Function
@@ -36,6 +37,11 @@ class App extends Component {
     })
   };
 
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  };
+
   render() {
     // INLINE STYLING
     const style ={
@@ -51,22 +57,28 @@ class App extends Component {
         <p>To na prawede działa!</p>
 
         {/* NOT RECCOMENDED using ARROW Function */}
-        <button style={style} onClick={() => this.switchNameHandler('Bartłomiej!!')}>Zamień imię</button>
+        <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
 
-        <Person
-         name={this.state.persons[0].name}
-         age={this.state.persons[0].age}/>
+        { 
+          this.state.showPersons ?
+            <div>
+              <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}/>
 
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        // BETTER USE BIND PROPERTY
-        click={this.switchNameHandler.bind(this, "Bartek!")}
-        changed={this.nameChangedHandler}>Moje zaintersowanie: siłownia</Person>
+              <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              // BETTER USE BIND PROPERTY
+              click={this.switchNameHandler.bind(this, "Bartek!")}
+              changed={this.nameChangedHandler}>Moje zaintersowanie: siłownia</Person>
+              
+              <Person 
+              name={this.state.persons[2].name} 
+              age={this.state.persons[2].age}/>
+            </div> : null
+        }
         
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>
       </div>
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
