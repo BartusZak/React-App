@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+//dodaje plik żeby stworzyć component
+import Person from './Person/Person';
 
 class App extends Component {
   render() {
@@ -7,6 +9,7 @@ class App extends Component {
       <div className="App">
         <h1>Siema ziomy!</h1>
         <p>To na prawede działa!</p>
+        <Person/>
       </div>
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
