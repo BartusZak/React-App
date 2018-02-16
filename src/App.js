@@ -37,13 +37,21 @@ class App extends Component {
   };
 
   render() {
+    // INLINE STYLING
+    const style ={
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '9px',
+      cursor: 'pointer'
+    };
      return (
       <div className="App">
         <h1>Siema ziomy!</h1>
         <p>To na prawede działa!</p>
 
         {/* NOT RECCOMENDED using ARROW Function */}
-        <button onClick={() => this.switchNameHandler('Bartłomiej!!')}>Zamień imię</button>
+        <button style={style} onClick={() => this.switchNameHandler('Bartłomiej!!')}>Zamień imię</button>
 
         <Person
          name={this.state.persons[0].name}
