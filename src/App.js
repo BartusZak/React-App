@@ -51,6 +51,29 @@ class App extends Component {
       padding: '9px',
       cursor: 'pointer'
     };
+
+    let persons = null;
+
+    if (this.state.showPersons){
+      persons  = (
+        <div>
+          <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}/>
+
+          <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          // BETTER USE BIND PROPERTY
+          click={this.switchNameHandler.bind(this, "Bartek!")}
+          changed={this.nameChangedHandler}>Moje zaintersowanie: siłownia</Person>
+          
+          <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}/>
+      </div>
+      );
+    }
      return (
       <div className="App">
         <h1>Siema ziomy!</h1>
@@ -58,27 +81,7 @@ class App extends Component {
 
         {/* NOT RECCOMENDED using ARROW Function */}
         <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
-
-        { 
-          this.state.showPersons ?
-            <div>
-              <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}/>
-
-              <Person 
-              name={this.state.persons[1].name} 
-              age={this.state.persons[1].age}
-              // BETTER USE BIND PROPERTY
-              click={this.switchNameHandler.bind(this, "Bartek!")}
-              changed={this.nameChangedHandler}>Moje zaintersowanie: siłownia</Person>
-              
-              <Person 
-              name={this.state.persons[2].name} 
-              age={this.state.persons[2].age}/>
-            </div> : null
-        }
-        
+        {persons}        
       </div>
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
