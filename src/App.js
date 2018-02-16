@@ -14,14 +14,25 @@ class App extends Component {
     showPersons: false
   }
 
-  nameChangedHandler  = (event) => {
-    this.setState({
-      persons: [
-      { name: 'Bartek', age: 22},
-      { name: event.target.value, age: 32},
-      { name: 'Kupa', age: 10}
-      ]
-    })
+  nameChangedHandler  = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+    
+    //modern approach spread operator
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    //alternative 
+    //const person = Object.assign({}, this.state.persons[personIndex]);
+
+    person.name = event.target.value;
+    
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState( {persons: persons} );
   };
 
   togglePersonHandler = () => {
@@ -54,7 +65,12 @@ class App extends Component {
       persons  = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} key={person.id}/>
+            return <Person 
+              click={() => this.deletePersonHandler(index)}
+              name={person.name} 
+              age={person.age} 
+              key={person.id} 
+              changed={(event) => this.nameChangedHandler(event, person.id)}/>
           })}
       </div>
       );
