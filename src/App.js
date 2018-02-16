@@ -11,12 +11,18 @@ class App extends Component {
       { name: 'Kupa', age: 10}
     ]
   }
+  
+  //IS6 Arrow Function
+  switchNameHandler = () => {
+    console.log("Was clicked");
+  };
+
   render() {
      return (
       <div className="App">
         <h1>Siema ziomy!</h1>
         <p>To na prawede działa!</p>
-        <button>Zamień imię</button>
+        <button onClick={this.switchNameHandler}>Zamień imię</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Moje zaintersowanie: siłownia</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
