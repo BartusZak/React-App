@@ -78,10 +78,23 @@ class App extends Component {
 
       style.backgroundColor = 'red';
     }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); 
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
+    
+
+
      return (
       <div className="App">
         <h1>Siema ziomy!</h1>
-        <p>To na prawede działa!</p>
+        <p className={classes.join(' ')}>To na prawede działa!</p>
 
         {/* NOT RECCOMENDED using ARROW Function */}
         <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
