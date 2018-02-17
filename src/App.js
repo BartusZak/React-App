@@ -50,17 +50,8 @@ class App extends Component {
   }
 
   render() {
-    // INLINE STYLING
-    const style ={
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '9px',
-      cursor: 'pointer'
-    };
-
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons){
       persons  = (
@@ -76,7 +67,7 @@ class App extends Component {
       </div>
       );
 
-      style.backgroundColor = 'red';
+      btnClass = classes.Red;
     }
 
     const assignedClasses = [];
@@ -94,7 +85,7 @@ class App extends Component {
           <p className={assignedClasses.join(' ')}>To na prawede działa!</p>
 
           {/* NOT RECCOMENDED using ARROW Function */}
-          <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
+          <button  className={btnClass} onClick={this.togglePersonHandler}>Toggle Osoby</button>
           {persons}        
         </div>
     ); 
