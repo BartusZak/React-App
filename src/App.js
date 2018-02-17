@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 //dodaje plik żeby stworzyć component
 import Person from './Person/Person';
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -57,7 +58,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '9px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -77,6 +82,10 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
     }
 
     const classes = [];
@@ -87,9 +96,6 @@ class App extends Component {
     if (this.state.persons.length <= 1) {
       classes.push('bold');
     }
-
-    
-
 
      return (
       <div className="App">
@@ -105,4 +111,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
