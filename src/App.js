@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 //dodaje plik żeby stworzyć component
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
   state = {
@@ -98,14 +98,16 @@ class App extends Component {
     }
 
      return (
-      <div className="App">
-        <h1>Siema ziomy!</h1>
-        <p className={classes.join(' ')}>To na prawede działa!</p>
+      <StyleRoot>
+        <div className="App">
+          <h1>Siema ziomy!</h1>
+          <p className={classes.join(' ')}>To na prawede działa!</p>
 
-        {/* NOT RECCOMENDED using ARROW Function */}
-        <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
-        {persons}        
-      </div>
+          {/* NOT RECCOMENDED using ARROW Function */}
+          <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
+          {persons}        
+        </div>
+      </StyleRoot>
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
   }
