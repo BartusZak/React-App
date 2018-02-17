@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 //dodaje plik żeby stworzyć component
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
   state = {
@@ -58,11 +57,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '9px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      cursor: 'pointer'
     };
 
     let persons = null;
@@ -82,35 +77,29 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red"); 
+      assignedClasses.push(classes.red); 
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
      return (
-      <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>Siema ziomy!</h1>
-          <p className={classes.join(' ')}>To na prawede działa!</p>
+          <p className={assignedClasses.join(' ')}>To na prawede działa!</p>
 
           {/* NOT RECCOMENDED using ARROW Function */}
           <button style={style} onClick={this.togglePersonHandler}>Toggle Osoby</button>
           {persons}        
         </div>
-      </StyleRoot>
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
   }
 }
 
-export default Radium(App);
+export default App;
