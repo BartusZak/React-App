@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Cockpit.css';
+
 const cockpit = (props) =>  {
     const assignedClasses = [];
     let btnClass = '';
@@ -17,7 +18,7 @@ const cockpit = (props) =>  {
 
     return(
         <div className={classes.Cockpit}>
-            <h1>Siema ziomy!</h1>
+            <h1>{props.appTitle}</h1>
             <p className={assignedClasses.join(' ')}>To na prawede działa!</p>
 
             {/* NOT RECCOMENDED using ARROW Function */}
