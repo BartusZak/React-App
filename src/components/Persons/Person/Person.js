@@ -1,21 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Person.css';
 
-//IS6
-const person = (props) => {
-    const rnd = Math.random();
+class Person extends Comment {
+    render() {
+        return (
+            <div className={classes.Person}>
+                <p onClick={this.props.click}>Jestem {this.props.name} i mam {this.props.age} lat</p>
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name}/>
+            </div>    
+        )
+    }
+}
 
-        // if (rnd > 0.7){
-        //     throw new Error("O kurwa!");
-        // }
-    return (
-        
-        <div className={classes.Person}>
-            <p onClick={props.click}>Jestem {props.name} i mam {props.age} lat</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name}/>
-        </div>    
-    )
-};
-
-export default person;
+export default Person;
