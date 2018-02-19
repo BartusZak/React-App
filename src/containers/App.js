@@ -4,7 +4,8 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Aux';
+import withClass from '../hoc/withClass';
 
 class App extends PureComponent {
   constructor(props){
@@ -99,7 +100,7 @@ class App extends PureComponent {
             changed={this.nameChangedHandler}/>
     }
      return (
-        <WithClass classes={classes.App}>
+        <Aux>
           <button onClick={() => {this.setState({showPersons: true})}}>Pokaż ziomeczków</button>
           <Cockpit
           appTitle={this.props.title}
@@ -107,11 +108,11 @@ class App extends PureComponent {
           persons={this.state.persons} 
           clicked={this.togglePersonHandler}/>
 
-          {persons}        
-        </WithClass>
+          {persons}      
+        </Aux>  
     ); 
     //return React.createElement('div', {className:  'App'}, React.createElement('h1', null, 'co tam'));
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
